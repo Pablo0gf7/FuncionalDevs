@@ -27,38 +27,16 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-/*Scaffold(
-          appBar: AppBar(
-            //titulo del banner
-            title: const Text('Startup Name Generator 3'),
-          ),
-          body: const Center(
-            //clase que generara la lista de palabras random
-            child: RandomWords(),
-          ),
-        )*/
-/*theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'My Flutter Demo First'),*/
 
+//creo el contenido visual y la acción a hacer
 class TaskListState extends State<TaskList> {
   //array que genera las palabras aleatorias
-  final _suggestions = <String>[];
+  final List<Map<String, int>> _tasks = [];
   //tamaño del texto de la lista
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
   //Funcion que va a otra pagina de la app
-  void _pushSaved() {
+  void _pushTask() {
     /*Navigator.of(context).push(MaterialPageRoute<void>(builder: (context) {
       final tiles = _saved.map(
         (pair) {
@@ -76,7 +54,6 @@ class TaskListState extends State<TaskList> {
               tiles: tiles,
             ).toList()
           : <Widget>[];
-
       return Scaffold(
         appBar: AppBar(
           title: const Text('Saved Sugestions'),
@@ -89,82 +66,203 @@ class TaskListState extends State<TaskList> {
     }));*/
   }
 
+  //OTRA FORMA PERO ES MAS ENREDESADA
+  //https://api.flutter.dev/flutter/material/ListTile-class.html
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //añado un icono a la barra AppBar
-      appBar: AppBar(title: const Text('Lista de tareas'), actions: [
-        IconButton(
-          icon: const Icon(Icons.list),
-          onPressed: _pushSaved,
-          tooltip: 'Sugerencias guardadas',
-        )
-      ]),
-      //creo la listView
-      body: ListView.builder(
-          //padding entre items
-          padding: const EdgeInsets.all(16.0),
-          /*
-    se llama cada par de palabras sugeridas, añadiendo una fila para las parejas 
-    de palabras.
-    */
-          itemBuilder: (context, i) {
-            //construye la lista
-            //añade un widget separador entre items de cada fila en la ListView.
-            if (i.isOdd) return const Divider();
+    //lista de tipos de tareas
+    final List<int> type_task = [0, 1, 2, 2, 1, 0, 4, 4];
+    //lista de tareas
+    final List<String> items = List<String>.generate(8, (i) => '$i');
 
-            /*
-      divide i entre 2 de forma entera, para calcular el numero de palabras 
-      emparejadas en la ListView, salvo los widgets divisores.
-      */
-            final index = i ~/ 2;
-            if (index >= _suggestions.length) {
-              /*
-        si alcanza el final de los pares de palabras, entonces genera 10 más y
-        los añade a la lista de sugerencias.
-        */
-              _suggestions.addAll([
-                'task 1',
-                'task 2',
-                'task3',
-                'task 4',
-                'task 5',
-                'task6',
-                'task 7',
-                'task 8',
-                'task 9',
-                'task10'
-              ]);
-            }
-            //guardo las palabras en un contenedor
-            //final alreadySaved = _saved.contains(_suggestions[index]);
-
-            return ListTile(
-              title: Text(
-                _suggestions[index],
-                style: _biggerFont,
-              ),
-              //añadimos el icono del corazon en la lista
-              trailing: Icon(
-                //cuando esta seleccionado Icons.favorite
-                //cuando no esta seleccionado Icons.favorite_border
-                Icons.favorite,
-                //cuando esta seleccionado es rojo y cuando no no tiene color
-                color: Colors.red,
-              ),
-
-              //aplicamos la acción
-              onTap: () {
-                setState(() {
-                  //si esta guardado
-                });
-              },
+    //genero la listview separable
+    final lista_tareas = ListView.separated(
+      separatorBuilder: (context, index) => Divider(
+        color: Color.fromARGB(255, 243, 245, 243),
+      ),
+      padding: const EdgeInsets.all(8.0), //paddind
+      itemCount: items.length, //numero de elementos a tener
+      itemBuilder: (context, index) {
+        //dependiendo del tipo de tarea cambiara el icono
+        switch (type_task[index]) {
+          case 0:
+            return Expanded(
+              child: Container(
+                  color: Colors.white,
+                  width: 200,
+                  height: 100,
+                  child: ListTile(
+                    //contenido de la lista
+                    minLeadingWidth: 20,
+                    minVerticalPadding: 0, //eliminamos el padding
+                    //titulo
+                    title: Transform.translate(
+                      offset: Offset(10, 10), //padding del titulo
+                      child: Text(
+                        'Item ${items[index]}',
+                        style: TextStyle(fontSize: 35), //tamaño de la fuente
+                      ),
+                    ),
+                    //subtitulo
+                    subtitle: Transform.translate(
+                      offset: Offset(10, 10),
+                      child: Text(
+                        'Item description',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    //icono
+                    trailing: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {},
+                      child: Container(
+                        width: 90,
+                        height: 100,
+                        child: Icon(
+                          Icons.mail,
+                          size: 90, // tamaño
+                          color: Color.fromARGB(255, 22, 160, 148), //color
+                        ),
+                      ),
+                    ),
+                  )),
             );
-          }),
+
+            break;
+          case 1:
+            return Expanded(
+              child: Container(
+                  color: Colors.white,
+                  width: 200,
+                  height: 100,
+                  child: ListTile(
+                    minLeadingWidth: 20,
+                    minVerticalPadding: 0,
+                    title: Transform.translate(
+                      offset: Offset(10, 10),
+                      child: Text(
+                        'Item ${items[index]}',
+                        style: TextStyle(fontSize: 35),
+                      ),
+                    ),
+                    subtitle: Transform.translate(
+                      offset: Offset(10, 10),
+                      child: Text(
+                        'Item description',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    trailing: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {},
+                      child: Container(
+                        width: 90,
+                        height: 100,
+                        child: Icon(
+                          Icons.android,
+                          size: 90,
+                          color: Color.fromARGB(255, 22, 160, 148),
+                        ),
+                      ),
+                    ),
+                  )),
+            );
+            break;
+          case 2:
+            return Expanded(
+              child: Container(
+                  color: Colors.white,
+                  width: 200,
+                  height: 100,
+                  child: ListTile(
+                    minLeadingWidth: 20,
+                    minVerticalPadding: 0,
+                    title: Transform.translate(
+                      offset: Offset(10, 10),
+                      child: Text(
+                        'Item ${items[index]}',
+                        style: TextStyle(fontSize: 35),
+                      ),
+                    ),
+                    subtitle: Transform.translate(
+                      offset: Offset(10, 10),
+                      child: Text(
+                        'Item description',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    trailing: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {},
+                      child: Container(
+                        width: 90,
+                        height: 100,
+                        child: Icon(
+                          Icons.face,
+                          size: 90,
+                          color: Color.fromARGB(255, 22, 160, 148),
+                        ),
+                      ),
+                    ),
+                  )),
+            );
+            break;
+          default:
+            return Expanded(
+              child: Container(
+                  color: Colors.white,
+                  width: 200,
+                  height: 100,
+                  child: ListTile(
+                    minLeadingWidth: 20,
+                    minVerticalPadding: 0,
+                    title: Transform.translate(
+                      offset: Offset(10, 10),
+                      child: Text(
+                        'Item ${items[index]}',
+                        style: TextStyle(fontSize: 35),
+                      ),
+                    ),
+                    subtitle: Transform.translate(
+                      offset: Offset(10, 10),
+                      child: Text(
+                        'Item description',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                    trailing: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: () {},
+                      child: Container(
+                        width: 90,
+                        height: 100,
+                        child: Icon(
+                          Icons.forest,
+                          size: 90,
+                          color: Color.fromARGB(255, 22, 160, 148),
+                        ),
+                      ),
+                    ),
+                  )),
+            );
+            break;
+        }
+      },
     );
 
-    //final wordPair = WordPair.random();
-    //return Text(wordPair.asPascalCase);
+    return Scaffold(
+        backgroundColor: Color.fromARGB(255, 243, 245, 243),
+        //añado un icono a la barra AppBar
+        appBar: AppBar(title: const Text('Lista de tareas'), actions: [
+          IconButton(
+            icon: const Icon(Icons.list),
+            onPressed: _pushTask, //cuando pincha una tarea (ACCION)
+            tooltip: 'Sugerencias guardadas',
+          )
+        ]),
+        //creo la listView
+        body: Center(child: lista_tareas));
   }
   // TODO Add build() method
 }
@@ -173,5 +271,6 @@ class TaskList extends StatefulWidget {
   const TaskList({super.key});
 
   @override
-  State<TaskList> createState() => TaskListState();
+  State<TaskList> createState() =>
+      TaskListState(); //GENERA EL CONTENIDO VISUAL Y EL FUNCIONAMIETO
 }
