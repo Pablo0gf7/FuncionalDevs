@@ -89,162 +89,178 @@ class TaskListState extends State<TaskList> {
           case 0:
             return Expanded(
               child: Container(
-                  color: Colors.white,
-                  width: 200,
-                  height: 100,
-                  child: ListTile(
-                    //contenido de la lista
-                    minLeadingWidth: 20,
-                    minVerticalPadding: 0, //eliminamos el padding
-                    //titulo
-                    title: Transform.translate(
-                      offset: Offset(10, 10), //padding del titulo
-                      child: Text(
-                        'Item ${items[index]}',
-                        style: TextStyle(fontSize: 35), //tamaño de la fuente
-                      ),
-                    ),
-                    //subtitulo
-                    subtitle: Transform.translate(
-                      offset: Offset(10, 10),
-                      child: Text(
-                        'Item description',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    //icono
-                    trailing: GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {},
+                width: 200,
+                height: 100,
+                color: Color.fromARGB(255, 22, 160, 148), //color
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
                       child: Container(
-                        width: 90,
+                        color: Color.fromARGB(255, 22, 160, 148),
                         height: 100,
-                        child: Icon(
-                          Icons.mail,
-                          size: 90, // tamaño
-                          color: Color.fromARGB(255, 22, 160, 148), //color
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Car or sport car',
+                            maxLines: 3,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 35,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  )),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('images/example.png'),
+                          fit: BoxFit.fill,
+                        ),
+                        color: Color.fromARGB(255, 22, 160, 148),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             );
 
             break;
           case 1:
             return Expanded(
               child: Container(
-                  color: Colors.white,
-                  width: 200,
-                  height: 100,
-                  child: ListTile(
-                    minLeadingWidth: 20,
-                    minVerticalPadding: 0,
-                    title: Transform.translate(
-                      offset: Offset(10, 10),
-                      child: Text(
-                        'Item ${items[index]}',
-                        style: TextStyle(fontSize: 35),
-                      ),
-                    ),
-                    subtitle: Transform.translate(
-                      offset: Offset(10, 10),
-                      child: Text(
-                        'Item description',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    trailing: GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {},
+                width: 200,
+                height: 100,
+                color: Color.fromARGB(255, 22, 160, 148), //color
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
                       child: Container(
-                        width: 90,
+                        color: Color.fromARGB(255, 22, 160, 148),
                         height: 100,
-                        child: Icon(
-                          Icons.android,
-                          size: 90,
-                          color: Color.fromARGB(255, 22, 160, 148),
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Car or sport car',
+                            maxLines: 3,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 35,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  )),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('images/example.png'),
+                          fit: BoxFit.fill,
+                        ),
+                        color: Color.fromARGB(255, 22, 160, 148),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             );
             break;
           case 2:
             return Expanded(
               child: Container(
-                  color: Colors.white,
-                  width: 200,
-                  height: 100,
-                  child: ListTile(
-                    minLeadingWidth: 20,
-                    minVerticalPadding: 0,
-                    title: Transform.translate(
-                      offset: Offset(10, 10),
-                      child: Text(
-                        'Item ${items[index]}',
-                        style: TextStyle(fontSize: 35),
-                      ),
-                    ),
-                    subtitle: Transform.translate(
-                      offset: Offset(10, 10),
-                      child: Text(
-                        'Item description',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    trailing: GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {},
+                width: 200,
+                height: 100,
+                color: Color.fromARGB(255, 22, 160, 148), //color
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
                       child: Container(
-                        width: 90,
+                        color: Color.fromARGB(255, 22, 160, 148),
                         height: 100,
-                        child: Icon(
-                          Icons.face,
-                          size: 90,
-                          color: Color.fromARGB(255, 22, 160, 148),
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Car or sport car',
+                            maxLines: 3,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 35,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  )),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('images/example.png'),
+                          fit: BoxFit.fill,
+                        ),
+                        color: Color.fromARGB(255, 22, 160, 148),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             );
             break;
           default:
             return Expanded(
               child: Container(
-                  color: Colors.white,
-                  width: 200,
-                  height: 100,
-                  child: ListTile(
-                    minLeadingWidth: 20,
-                    minVerticalPadding: 0,
-                    title: Transform.translate(
-                      offset: Offset(10, 10),
-                      child: Text(
-                        'Item ${items[index]}',
-                        style: TextStyle(fontSize: 35),
-                      ),
-                    ),
-                    subtitle: Transform.translate(
-                      offset: Offset(10, 10),
-                      child: Text(
-                        'Item description',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    trailing: GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () {},
+                width: 200,
+                height: 100,
+                color: Color.fromARGB(255, 22, 160, 148), //color
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
                       child: Container(
-                        width: 90,
+                        color: Color.fromARGB(255, 22, 160, 148),
                         height: 100,
-                        child: Icon(
-                          Icons.forest,
-                          size: 90,
-                          color: Color.fromARGB(255, 22, 160, 148),
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Car or sport car',
+                            maxLines: 3,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 35,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  )),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('images/example.png'),
+                          fit: BoxFit.fill,
+                        ),
+                        color: Color.fromARGB(255, 22, 160, 148),
+                        shape: BoxShape.rectangle,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             );
             break;
         }
