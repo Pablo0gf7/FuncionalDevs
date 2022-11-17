@@ -81,7 +81,7 @@ class TaskListState extends State<TaskList> {
       separatorBuilder: (context, index) => Divider(
         color: Color.fromARGB(255, 243, 245, 243),
       ),
-      padding: const EdgeInsets.all(8.0), //paddind
+      padding: const EdgeInsets.all(26.0), //paddind
       itemCount: items.length, //numero de elementos a tener
       itemBuilder: (context, index) {
         //dependiendo del tipo de tarea cambiara el icono
@@ -277,10 +277,88 @@ class TaskListState extends State<TaskList> {
             tooltip: 'Sugerencias guardadas',
           )
         ]),
+        //navegador de abajo
+        bottomNavigationBar: BottomAppBar(
+          child: Padding(
+            padding: const EdgeInsets.all(0),
+            child: OverflowBar(
+              overflowAlignment: OverflowBarAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment:
+                      MainAxisAlignment.center, //alineamiento de las cajas
+                  crossAxisAlignment:
+                      CrossAxisAlignment.center, //alineamiento cruzado
+                  children: <Widget>[
+                    //flecha izquierda
+                    SizedBox(
+                      width: 90,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Color.fromARGB(255, 4, 127, 158),
+                        ),
+                        iconSize: 80,
+                        onPressed: () {},
+                      ),
+                    ),
+                    SizedBox(width: 50), //separador
+                    //flecha arriba
+                    SizedBox(
+                      width: 90,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_upward,
+                          color: Color.fromARGB(255, 4, 127, 158),
+                        ),
+                        iconSize: 80,
+                        onPressed: () {},
+                      ),
+                    ),
+                    SizedBox(width: 50), //separador
+                    //flecha abajo
+                    SizedBox(
+                      width: 90,
+                      child: IconButton(
+                        style: TextButton.styleFrom(
+                          minimumSize: Size.zero, // Set this
+                          padding: EdgeInsets.zero, // and this
+                        ),
+                        icon: Icon(
+                          Icons.arrow_downward,
+                          color: Color.fromARGB(255, 4, 127, 158),
+                        ),
+                        iconSize: 80,
+                        onPressed: () {},
+                      ),
+                    ),
+                    SizedBox(width: 50), //separador
+                    //flecha derecha
+                    SizedBox(
+                      width: 90,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_forward,
+                          color: Color.fromARGB(255, 4, 127, 158),
+                        ),
+                        iconSize: 80,
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          color: Color.fromARGB(255, 168, 15, 148),
+        ),
         //creo la listView
         body: Center(child: lista_tareas));
   }
+
   // TODO Add build() method
+  void accionBoton() {}
 }
 
 class TaskList extends StatefulWidget {
@@ -290,3 +368,5 @@ class TaskList extends StatefulWidget {
   State<TaskList> createState() =>
       TaskListState(); //GENERA EL CONTENIDO VISUAL Y EL FUNCIONAMIETO
 }
+
+//para más información BottomAppBar: https://api.flutter.dev/flutter/material/SliverAppBar-class.html
