@@ -10,27 +10,23 @@
 -- predefined type, no DDL - XMLTYPE
 
 CREATE TABLE administrador (
-    id unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id NVARCHAR2(30)  
      NOT NULL
 );
 
 ALTER TABLE administrador ADD CONSTRAINT administrador_pk PRIMARY KEY ( id );
 
 CREATE TABLE alumno (
-    id unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id INT(20)
      NOT NULL
 );
 
 ALTER TABLE alumno ADD CONSTRAINT alumno_pk PRIMARY KEY ( id );
 
 CREATE TABLE alumno_mensaje (
-    alumno_id          unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    alumno_id          INT(20)
      NOT NULL,
-    mensaje_id_mensaje unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    mensaje_id_mensaje INT(20)
      NOT NULL
 );
 
@@ -38,34 +34,27 @@ ALTER TABLE alumno_mensaje ADD CONSTRAINT alumno_mensaje_pk PRIMARY KEY ( alumno
                                                                           mensaje_id_mensaje );
 
 CREATE TABLE audio (
-    id_audio                   unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_audio         INT(20)
      NOT NULL,
-    explicacion_id_explicacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_explicacion_a INT(20) 
      NOT NULL
 );
 
 ALTER TABLE audio ADD CONSTRAINT audio_pk PRIMARY KEY ( id_audio );
 
 CREATE TABLE explicacion (
-    id_explicacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_explicacion INT(20)
      NOT NULL,
-    descripcion    unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    descripcion    NVARCHAR2(200) 
 
 );
 
 ALTER TABLE explicacion ADD CONSTRAINT explicacion_pk PRIMARY KEY ( id_explicacion );
 
 CREATE TABLE imagen (
-    id_imagen    unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_imagen    INT(20) 
      NOT NULL,
-    item_id_item unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
-
+    item_id_item INT(20)
 );
 
 CREATE UNIQUE INDEX imagen__idx ON
@@ -76,102 +65,78 @@ CREATE UNIQUE INDEX imagen__idx ON
 ALTER TABLE imagen ADD CONSTRAINT imagen_pk PRIMARY KEY ( id_imagen );
 
 CREATE TABLE item (
-    id_item     unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_item     INT(20)
      NOT NULL,
-    nombre      unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    nombre      NVARCHAR2(100) 
     ,
-    descripcion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    descripcion NVARCHAR2(200) 
     ,
-    stock       unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    stock       NUMBER
 
 );
 
 ALTER TABLE item ADD CONSTRAINT item_pk PRIMARY KEY ( id_item );
 
 CREATE TABLE mensaje (
-    id_mensaje unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_mensaje INT(20) 
      NOT NULL,
-    titulo     unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    titulo     NVARCHAR2(100) 
     ,
-    texto      unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    texto      NVARCHAR2(300) 
     ,
-    fecha      unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    fecha      DATE
     ,
-    hora       unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    hora       TIME
 
 );
 
 ALTER TABLE mensaje ADD CONSTRAINT mensaje_pk PRIMARY KEY ( id_mensaje );
 
 CREATE TABLE menu (
-    id_menu             unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_menu             INT(20) 
      NOT NULL,
-    tipo                unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    tipo                NVARCHAR2(100) 
     ,
-    fecha_inicio        unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    fecha_inicio        DATE
     ,
-    fecha_fin           unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    fecha_fin           DATE
     ,
-    tarea_menu_id_tarea unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    tarea_menu_id_tarea NVARCHAR2(30) 
      NOT NULL
 );
 
 ALTER TABLE menu ADD CONSTRAINT menu_pk PRIMARY KEY ( id_menu );
 
 CREATE TABLE notificacion (
-    id_notificacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_notificacion INT(20)
      NOT NULL,
-    titulo          unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    titulo          NVARCHAR2(100) 
     ,
-    texto           unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    texto           NVARCHAR2(300) 
 
 );
 
 ALTER TABLE notificacion ADD CONSTRAINT notificacion_pk PRIMARY KEY ( id_notificacion );
 
 CREATE TABLE pictograma (
-    id_picto                     unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_picto                    INT(20)
      NOT NULL,
-    secuencia_pictogramas_id_sec unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    secuencia_pictogramas_id_sec INT(20) 
      NOT NULL
 );
 
 ALTER TABLE pictograma ADD CONSTRAINT pictograma_pk PRIMARY KEY ( id_picto );
 
 CREATE TABLE plato (
-    id_plato         unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_plato         INT(20)
      NOT NULL,
-    tipo_plato       unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    tipo_plato       NVARCHAR2(100) 
     ,
-    descripcion      unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    descripcion      NVARCHAR2(100) 
     ,
-    imagen_id_imagen unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    imagen_id_imagen NVARCHAR2(30) 
      NOT NULL,
-    menu_id_menu     unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    menu_id_menu     NVARCHAR2(30) 
      NOT NULL
 );
 
@@ -183,11 +148,9 @@ CREATE UNIQUE INDEX plato__idx ON
 ALTER TABLE plato ADD CONSTRAINT plato_pk PRIMARY KEY ( id_plato );
 
 CREATE TABLE profe_men (
-    profesor_id        unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    profesor_id        INT(20) 
      NOT NULL,
-    mensaje_id_mensaje unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    mensaje_id_mensaje INT(20) 
      NOT NULL
 );
 
@@ -195,19 +158,16 @@ ALTER TABLE profe_men ADD CONSTRAINT profe_alum_pk PRIMARY KEY ( profesor_id,
                                                                  mensaje_id_mensaje );
 
 CREATE TABLE profesor (
-    id unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id NVARCHAR2(30) 
      NOT NULL
 );
 
 ALTER TABLE profesor ADD CONSTRAINT profesor_pk PRIMARY KEY ( id );
 
 CREATE TABLE relation_10 (
-    imagen_id_imagen           unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    imagen_id_imagen           INT(20) 
      NOT NULL,
-    explicacion_id_explicacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    explicacion_id_explicacion INT(20) 
      NOT NULL
 );
 
@@ -215,14 +175,11 @@ ALTER TABLE relation_10 ADD CONSTRAINT relation_10_pk PRIMARY KEY ( imagen_id_im
                                                                     explicacion_id_explicacion );
 
 CREATE TABLE retroalimentacion (
-    id_retroalimentacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_retroalimentacion INT(20)
      NOT NULL,
-    descripcion          unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    descripcion          NVARCHAR2(300) 
     ,
-    tarea_id_tarea       unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    tarea_id_tarea       NVARCHAR2(30) 
      NOT NULL
 );
 
@@ -234,104 +191,81 @@ CREATE UNIQUE INDEX retroalimentacion__idx ON
 ALTER TABLE retroalimentacion ADD CONSTRAINT retroalimentacion_pk PRIMARY KEY ( id_retroalimentacion );
 
 CREATE TABLE secuencia_pictogramas (
-    id_sec                     unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_sec                     INT(20)
      NOT NULL,
-    orden                      unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    orden                      NUMBER
     ,
-    explicacion_id_explicacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    explicacion_id_explicacion INT(20)
      NOT NULL
 );
 
 ALTER TABLE secuencia_pictogramas ADD CONSTRAINT secuencia_pictogramas_pk PRIMARY KEY ( id_sec );
 
 CREATE TABLE tarea (
-    id_tarea     unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_tarea     INT(20)
      NOT NULL,
-    nombre       unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    nombre       NVARCHAR2(100) 
     ,
-    descripcion  unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    descripcion  NVARCHAR2(300) 
     ,
-    fecha_inicio unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    fecha_inicio DATE
     ,
-    fecha_fin    unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    fecha_fin    DATE
     ,
-    estado       unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    estado       NVARCHAR2(300) 
 
 );
 
 ALTER TABLE tarea ADD CONSTRAINT tarea_pk PRIMARY KEY ( id_tarea );
 
 CREATE TABLE tarea_comanda (
-    id_tarea unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_tarea NVARCHAR2(30) 
      NOT NULL
 );
 
 ALTER TABLE tarea_comanda ADD CONSTRAINT tarea_comanda_pk PRIMARY KEY ( id_tarea );
 
 CREATE TABLE tarea_fotocopia (
-    id_tarea    unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_tarea    INT(20) 
      NOT NULL,
-    aula        unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    aula        NVARCHAR2(30) 
     ,
-    cantidad    unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    cantidad    NUMBER
     ,
-    descripcion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    descripcion NVARCHAR2(100) 
 
 );
 
 ALTER TABLE tarea_fotocopia ADD CONSTRAINT tarea_fotocopia_pk PRIMARY KEY ( id_tarea );
 
 CREATE TABLE tarea_material (
-    id_tarea            unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_tarea            INT(20) 
      NOT NULL,
-    aula                unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    aula                NVARCHAR2(30)
     ,
-    cantidad_requerida  unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    cantidad_requerida  NUMBER
     ,
-    cantidad_conseguida unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    cantidad_conseguida NUMBER
 
 );
 
 ALTER TABLE tarea_material ADD CONSTRAINT tarea_material_pk PRIMARY KEY ( id_tarea );
 
 CREATE TABLE tarea_menu (
-    id_tarea unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_tarea NVARCHAR2(30) 
      NOT NULL,
-    aula     unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    aula     NVARCHAR2(30)
     ,
-    cantidad unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    cantidad NUMBER
 
 );
 
 ALTER TABLE tarea_menu ADD CONSTRAINT tarea_menu_pk PRIMARY KEY ( id_tarea );
 
 CREATE TABLE tareamat_item (
-    item_id_item            unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    item_id_item        INT(20) 
      NOT NULL,
-    tarea_material_id_tarea unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    tarea_material_id_tarea INT(20) 
      NOT NULL
 );
 
@@ -339,42 +273,33 @@ ALTER TABLE tareamat_item ADD CONSTRAINT tareamat_item_pk PRIMARY KEY ( item_id_
                                                                         tarea_material_id_tarea );
 
 CREATE TABLE texto (
-    id_texto                   unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_texto            INT(20)
      NOT NULL,
-    explicacion_id_explicacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    explicacion_id_explicacion INT(20)
      NOT NULL
 );
 
 ALTER TABLE texto ADD CONSTRAINT texto_pk PRIMARY KEY ( id_texto );
 
 CREATE TABLE usuario (
-    id             unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id             INT(20)
      NOT NULL,
-    nombre         unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    nombre         NVARCHAR2(100) 
     ,
-    apellidos      unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    apellidos      NVARCHAR2(100)
     ,
-    nombre_usuario unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    nombre_usuario NVARCHAR2(100)
     ,
-    password       unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    password       NVARCHAR2(100)
 
 );
 
 ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY ( id );
 
 CREATE TABLE usuario_notifi (
-    usuario_id                   unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    usuario_id            INT(20)
      NOT NULL,
-    notificacion_id_notificacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    notificacion_id_notificacion INT(20)
      NOT NULL
 );
 
@@ -382,11 +307,9 @@ ALTER TABLE usuario_notifi ADD CONSTRAINT usuario_notifi_pk PRIMARY KEY ( usuari
                                                                           notificacion_id_notificacion );
 
 CREATE TABLE usuario_tarea (
-    usuario_id     unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    usuario_id     INT(20) 
      NOT NULL,
-    tarea_id_tarea unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    tarea_id_tarea INT(20)
      NOT NULL
 );
 
@@ -394,11 +317,9 @@ ALTER TABLE usuario_tarea ADD CONSTRAINT usuario_tarea_pk PRIMARY KEY ( usuario_
                                                                         tarea_id_tarea );
 
 CREATE TABLE video (
-    id_video                   unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    id_video        INT(20) 
      NOT NULL,
-    explicacion_id_explicacion unknown 
---  ERROR: Datatype UNKNOWN is not allowed 
+    explicacion_id_explicacion INT(20)
      NOT NULL
 );
 
@@ -432,9 +353,8 @@ ALTER TABLE menu
     ADD CONSTRAINT menu_tarea_menu_fk FOREIGN KEY ( tarea_menu_id_tarea )
         REFERENCES tarea_menu ( id_tarea );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
 ALTER TABLE pictograma
-    ADD CONSTRAINT pictograma_secuencia_pictogramas_fk FOREIGN KEY ( secuencia_pictogramas_id_sec )
+    ADD CONSTRAINT picto_sec_picto_fk FOREIGN KEY ( secuencia_pictogramas_id_sec )
         REFERENCES secuencia_pictogramas ( id_sec );
 
 ALTER TABLE plato
@@ -469,23 +389,22 @@ ALTER TABLE retroalimentacion
     ADD CONSTRAINT retroalimentacion_tarea_fk FOREIGN KEY ( tarea_id_tarea )
         REFERENCES tarea ( id_tarea );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
+
 ALTER TABLE secuencia_pictogramas
-    ADD CONSTRAINT secuencia_pictogramas_explicacion_fk FOREIGN KEY ( explicacion_id_explicacion )
+    ADD CONSTRAINT sec_picto_explica_fk FOREIGN KEY ( explicacion_id_explicacion )
         REFERENCES explicacion ( id_explicacion );
 
 ALTER TABLE tarea_comanda
     ADD CONSTRAINT tarea_comanda_tarea_fk FOREIGN KEY ( id_tarea )
         REFERENCES tarea ( id_tarea );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
 ALTER TABLE tarea_fotocopia
-    ADD CONSTRAINT tarea_fotocopia_tarea_comanda_fk FOREIGN KEY ( id_tarea )
+    ADD CONSTRAINT fotocopia_comanda_fk FOREIGN KEY ( id_tarea )
         REFERENCES tarea_comanda ( id_tarea );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
+
 ALTER TABLE tarea_material
-    ADD CONSTRAINT tarea_material_tarea_comanda_fk FOREIGN KEY ( id_tarea )
+    ADD CONSTRAINT material_comanda_fk FOREIGN KEY ( id_tarea )
         REFERENCES tarea_comanda ( id_tarea );
 
 ALTER TABLE tarea_menu
@@ -496,9 +415,9 @@ ALTER TABLE tareamat_item
     ADD CONSTRAINT tareamat_item_item_fk FOREIGN KEY ( item_id_item )
         REFERENCES item ( id_item );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
+
 ALTER TABLE tareamat_item
-    ADD CONSTRAINT tareamat_item_tarea_material_fk FOREIGN KEY ( tarea_material_id_tarea )
+    ADD CONSTRAINT mat_item_material_fk FOREIGN KEY ( tarea_material_id_tarea )
         REFERENCES tarea_material ( id_tarea );
 
 ALTER TABLE texto
@@ -525,59 +444,6 @@ ALTER TABLE video
     ADD CONSTRAINT video_explicacion_fk FOREIGN KEY ( explicacion_id_explicacion )
         REFERENCES explicacion ( id_explicacion );
 
---  ERROR: No Discriminator Column found in Arc FKArc_1 - constraint trigger for Arc cannot be generated 
-
---  ERROR: No Discriminator Column found in Arc FKArc_1 - constraint trigger for Arc cannot be generated 
-
---  ERROR: No Discriminator Column found in Arc FKArc_1 - constraint trigger for Arc cannot be generated
-
---  ERROR: No Discriminator Column found in Arc FKArc_2 - constraint trigger for Arc cannot be generated 
-
---  ERROR: No Discriminator Column found in Arc FKArc_2 - constraint trigger for Arc cannot be generated 
-
---  ERROR: No Discriminator Column found in Arc FKArc_2 - constraint trigger for Arc cannot be generated
 
 
 
--- Oracle SQL Developer Data Modeler Summary Report: 
--- 
--- CREATE TABLE                            28
--- CREATE INDEX                             3
--- ALTER TABLE                             57
--- CREATE VIEW                              0
--- ALTER VIEW                               0
--- CREATE PACKAGE                           0
--- CREATE PACKAGE BODY                      0
--- CREATE PROCEDURE                         0
--- CREATE FUNCTION                          0
--- CREATE TRIGGER                           0
--- ALTER TRIGGER                            0
--- CREATE COLLECTION TYPE                   0
--- CREATE STRUCTURED TYPE                   0
--- CREATE STRUCTURED TYPE BODY              0
--- CREATE CLUSTER                           0
--- CREATE CONTEXT                           0
--- CREATE DATABASE                          0
--- CREATE DIMENSION                         0
--- CREATE DIRECTORY                         0
--- CREATE DISK GROUP                        0
--- CREATE ROLE                              0
--- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          0
--- CREATE MATERIALIZED VIEW                 0
--- CREATE MATERIALIZED VIEW LOG             0
--- CREATE SYNONYM                           0
--- CREATE TABLESPACE                        0
--- CREATE USER                              0
--- 
--- DROP TABLESPACE                          0
--- DROP DATABASE                            0
--- 
--- REDACTION POLICY                         0
--- 
--- ORDS DROP SCHEMA                         0
--- ORDS ENABLE SCHEMA                       0
--- ORDS ENABLE OBJECT                       0
--- 
--- ERRORS                                  89
--- WARNINGS                                 0
