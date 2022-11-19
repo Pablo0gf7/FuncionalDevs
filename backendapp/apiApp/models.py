@@ -157,7 +157,6 @@ class SecuenciaPictogramas(models.Model):
 
 
 class Tarea(models.Model):
-    id_tarea = models.IntegerField()
     nombre = models.TextField(blank=True, null=True)  # This field type is a guess.
     descripcion = models.TextField(blank=True, null=True)  # This field type is a guess.
     fecha_inicio = models.DateField(blank=True, null=True)
