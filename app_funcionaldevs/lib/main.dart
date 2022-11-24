@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 
 /*void main() {
   runApp(const MyApp());
@@ -19,12 +18,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //titulo de la app
       title: 'FuncionalDevs',
+      //tema
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
+          //fondo de la barra de arriba
           backgroundColor: Colors.white,
+          //color texto de la barra de arriba
           foregroundColor: Colors.black,
         ),
       ),
+      //lo que queremos que visualice inicialmente
       home: MenuList(),
     );
   }
@@ -91,6 +94,7 @@ class MenuListState extends State<MenuList> {
 
   @override
   Widget build(BuildContext context) {
+    //el buid es lo que va a construir visual y funcional
     //lista de tipos de opciones
     final List<int> type_menu = [0, 1, 2, 2, 1, 0, 4, 4];
     //lista de tareas
@@ -105,21 +109,27 @@ class MenuListState extends State<MenuList> {
     //genero la listview separable
     final lista_menu = ListView.separated(
       separatorBuilder: (context, index) => Divider(
-        color: Color.fromARGB(255, 243, 245, 243),
+        color: Color.fromARGB(
+            255, 243, 245, 243), //el fondo del contenedor ListView
       ),
-      padding: const EdgeInsets.all(26.0), //paddind
+      padding: const EdgeInsets.all(26.0), //paddind entre items
       itemCount: items.length, //numero de elementos a tener
       itemBuilder: (context, index) {
-        //dependiendo del tipo de tarea cambiara el icono
+        //recorre de 0 a items.length
+        //dependiendo del tipo de opción del menu cambiara el icono
         switch (type_menu[index]) {
-          case 0:
+          case 0: //icono lista
             return Expanded(
+              //contenedor expandido solo horizontal
               child: Container(
-                width: 200,
                 height: 100,
-                color: Color.fromARGB(255, 161, 218, 233), //color
+                color:
+                    Color.fromARGB(255, 161, 218, 233), //color del contenedor
                 child: Row(
+                  //horizontal por columnas
+                  //children para crear hijos
                   children: <Widget>[
+                    //contenedor expandido para cada item
                     Expanded(
                       flex: 2,
                       child: Container(
@@ -156,6 +166,7 @@ class MenuListState extends State<MenuList> {
 
             break;
           case 1:
+            //esto solo devuelve 1 item a la list view
             return Expanded(
               child: Container(
                 width: 200,
@@ -167,28 +178,38 @@ class MenuListState extends State<MenuList> {
                       flex: 2,
                       child: Container(
                         height: 100,
+                        //con margen a los lados de 20
                         margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        //meto el texto, indicando el tipo de alineación
                         child: Align(
                           alignment: Alignment.centerLeft,
+                          //texto a visualizar
                           child: Text(
                             items[index],
                             maxLines: 3,
                             textAlign: TextAlign.center,
+                            //estilo de la fuente
                             style: TextStyle(
+                              //tamaño de la fuente
                               fontSize: 35,
                             ),
                           ),
                         ),
                       ),
                     ),
+                    //contenedor para la imagen de la derecha de cada item
                     Container(
                       width: 100,
                       height: 100,
+                      //las imagenes se menten en cajas Box
                       decoration: BoxDecoration(
+                        //metemos la ruta de la imagen
                         image: DecorationImage(
                           image: AssetImage('images/example.png'),
+                          //tipo de relleno
                           fit: BoxFit.fill,
                         ),
+                        //tipo de caja (redonda, cuadrada, ...)
                         shape: BoxShape.rectangle,
                       ),
                     ),
@@ -285,24 +306,33 @@ class MenuListState extends State<MenuList> {
       },
     );
 
+    //esto devuelve todo el contenido de la escena (appbar, lista, navegación, ...)
     return Scaffold(
+        //fondo del contenedor general
         backgroundColor: Color.fromARGB(255, 243, 245, 243),
-        //añado un icono a la barra AppBar
+        //añado la barra AppBar
         appBar: AppBar(title: const Text('Menú Principal'), actions: [
+          //añado un boton con un icono
           IconButton(
             icon: const Icon(Icons.list),
             onPressed: _pushTask, //cuando pincha una tarea (ACCION)
+            //cuando pasas el raton por encima del boton visualiza esto
             tooltip: 'Sugerencias guardadas',
           )
         ]),
         //navegador de abajo
         bottomNavigationBar: BottomAppBar(
           child: Padding(
+            //elimino el padding
             padding: const EdgeInsets.all(0),
+            //lo que va a contener el navegador
             child: OverflowBar(
+              //alinear el contenido centrado
               overflowAlignment: OverflowBarAlignment.center,
               children: <Widget>[
+                //creo un contenedor por columnas
                 Row(
+                  //de tamaño todo lo maximo posible
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment:
                       MainAxisAlignment.center, //alineamiento de las cajas
@@ -311,13 +341,17 @@ class MenuListState extends State<MenuList> {
                   children: <Widget>[
                     //flecha izquierda
                     SizedBox(
+                      //tamaño
                       width: 90,
+                      //icono
                       child: IconButton(
                         icon: Icon(
                           Icons.arrow_back,
                           color: Color.fromARGB(255, 4, 127, 158),
                         ),
+                        //tamaño del icono
                         iconSize: 80,
+                        //acción del boton
                         onPressed: () {},
                       ),
                     ),
@@ -378,6 +412,16 @@ class MenuListState extends State<MenuList> {
   // TODO Add build() method
   //acción del boton
   void accionBoton() {}
+}
+
+//contenedor global de todo el contenido
+class MenuList extends StatefulWidget {
+  const MenuList({super.key});
+
+  //utiliza estados states
+  @override
+  State<MenuList> createState() =>
+      MenuListState(); //GENERA EL CONTENIDO VISUAL Y EL FUNCIONAMIETO
 }
 
 //creo el contenido visual y la acción a hacer
@@ -742,12 +786,4 @@ class TaskList extends StatefulWidget {
   @override
   State<TaskList> createState() =>
       TaskListState(); //GENERA EL CONTENIDO VISUAL Y EL FUNCIONAMIETO
-}
-
-class MenuList extends StatefulWidget {
-  const MenuList({super.key});
-
-  @override
-  State<MenuList> createState() =>
-      MenuListState(); //GENERA EL CONTENIDO VISUAL Y EL FUNCIONAMIETO
 }
