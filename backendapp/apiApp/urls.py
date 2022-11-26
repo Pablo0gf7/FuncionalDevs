@@ -3,17 +3,22 @@ from .api import *
 from django.urls import path
 
 users = routers.DefaultRouter()
-users.register('usuarios', UsuarioViewSet, 'usuarios')
-tareas = routers.DefaultRouter()
-tareas.register('tareas', TareasViewSet, 'tareas')
+users.register('alumnos', AlumnoViewSet, 'alumnos')
 profesor = routers.DefaultRouter()
 profesor.register('profesores', ProfesorViewSet, 'profesor')
-
+tareasmat = routers.DefaultRouter()
+tareasmat.register('tareasmat', TareasMatViewSet, 'tareasmat')
+tareasfot = routers.DefaultRouter()
+tareasfot.register('tareasfot', TareasFotViewSet, 'tareasfot')
+tareasmenu = routers.DefaultRouter()
+tareasmenu.register('tareasmenu', TareasFotViewSet, 'tareasmenu')
 
 urlpatterns = [
   
 ]
 
 urlpatterns += users.urls
-urlpatterns += tareas.urls
 urlpatterns += profesor.urls
+urlpatterns += tareasmat.urls
+urlpatterns += tareasfot.urls
+urlpatterns += tareasmenu.urls

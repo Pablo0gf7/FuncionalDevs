@@ -13,14 +13,13 @@ class Usuario(models.Model):
     apellidos = models.TextField(blank=True, null=True)  # This field type is a guess.
     nombre_usuario = models.TextField(blank=True, null=True)  # This field type is a guess.
     password = models.TextField(blank=True, null=True)  # This field type is a guess.
-    es_admin = models.BooleanField()
 
     class Meta:
         db_table = 'usuario'
 
 
 class Profesor(Usuario):
-    
+    es_admin = models.BooleanField()
 
     class Meta:
         db_table = 'profesor'
@@ -33,12 +32,12 @@ class Alumno(Usuario):
 
 
 class Tarea(models.Model):
-    idta = models.BigAutoField(primary_key=True)
+    idta = models.BigIntegerField(primary_key=True)
     nombre = models.TextField(blank=True, null=True)  # This field type is a guess.
     descripcion = models.TextField(blank=True, null=True)  # This field type is a guess.
     fecha_inicio = models.DateField(blank=True, null=True)
     fecha_fin = models.DateField(blank=True, null=True)
-    estado = models.TextField(null=True)  # This field type is a guess.
+    estado = models.BooleanField()  # This field type is a guess.
     usuario = models.ManyToManyField(Usuario)
 
     class Meta:
@@ -53,15 +52,15 @@ class TareaComanda(Tarea):
 class TareaFotocopia(Tarea):
     
     aula = models.TextField(blank=True, null=True)  # This field type is a guess.
-    cantidad = models.TextField(blank=True, null=True)  # This field type is a guess.
+    cantidad = models.BigIntegerField(blank=True, null=True)  # This field type is a guess.
     class Meta:
         db_table = 'tarea_fotocopia'
 
 
 class TareaMaterial(Tarea):
     aula = models.TextField(blank=True, null=True)  # This field type is a guess.
-    cantidad_requerida = models.TextField(blank=True, null=True)  # This field type is a guess.
-    cantidad_conseguida = models.TextField(blank=True, null=True)  # This field type is a guess.
+    cantidad_requerida = models.BigIntegerField(blank=True, null=True)  # This field type is a guess.
+    cantidad_conseguida = models.BigIntegerField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
     
@@ -69,9 +68,8 @@ class TareaMaterial(Tarea):
 
 
 class TareaMenu(Tarea):
-    id_tarea = models.TextField()  # This field type is a guess.
     aula = models.TextField(blank=True, null=True)  # This field type is a guess.
-    cantidad = models.TextField(blank=True, null=True)  # This field type is a guess.
+    cantidad = models.BigIntegerField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
      

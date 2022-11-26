@@ -4,18 +4,32 @@ from rest_framework import viewsets, permissions
 from .serializers import *;
 from django.http import response
 
-class UsuarioViewSet(viewsets.ModelViewSet):
-    queryset = Usuario.objects.all()
+#Crea la vista de Profesores y los respectivos metodos
+class AlumnoViewSet(viewsets.ModelViewSet):
+    queryset = Alumno.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class =  UsuarioSerializer
+    serializer_class =  alumnoSerializer
 
-
-class TareasViewSet(viewsets.ModelViewSet):
-    queryset = Tarea.objects.all()
+#Crea la vista con las tareas de material
+class TareasMatViewSet(viewsets.ModelViewSet):
+    queryset = TareaMaterial.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class =  TareaSerializer
+    serializer_class =  TareaMatSerializer
     
+#Crea la vista con los profesores
 class ProfesorViewSet(viewsets.ModelViewSet):
     queryset = Profesor.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class =  ProfesorSerializer
+    serializer_class =  profesorSerializer
+
+#Crea la vista con las tareas de fotocopia
+class TareasFotViewSet(viewsets.ModelViewSet):
+    queryset = TareaFotocopia.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class =  TareaFotSerializer
+
+#Crea la vista con las tareas de fotocopia
+class TareasFotViewSet(viewsets.ModelViewSet):
+    queryset = TareaMenu.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class =  TareaMenuSerializer
