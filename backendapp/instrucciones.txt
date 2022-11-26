@@ -1,0 +1,15 @@
+Para ejecutar usar:
+
+python manage.py runserver
+
+con esto ya lo teneis y podeis enviar peticiones a http://127.0.0.1:8000/
+
+Ahora mismo las rutas que hay disponibles son 
+
+http://127.0.0.1:8000/alummnos/
+http://127.0.0.1:8000/profesores/
+http://127.0.0.1:8000/tareasmat/
+http://127.0.0.1:8000/tareasfot/
+http://127.0.0.1:8000/tareasmenu/
+
+Basicamente permiten hacer un CRUD de cada uno de estos tipos
