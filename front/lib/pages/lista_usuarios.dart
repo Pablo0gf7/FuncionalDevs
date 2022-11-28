@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:front/models/alumno.dart';
-import 'package:front/pages/bottom_nav.dart';
+
 import 'package:http/http.dart' as http;
 
 class ListaUsuarios extends StatefulWidget {
@@ -60,7 +59,7 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
           if (snap.hasError) {
             return const Center(child: Text("Hay un error"));
           }
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         },
       ),
       //Vamos a crear un botono para añadir nuevos usuarios

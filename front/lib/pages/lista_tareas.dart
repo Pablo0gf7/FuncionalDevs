@@ -35,7 +35,6 @@ class _ListaTareasState extends State<ListaTareas> {
         builder: (context, snap) {
           //Comprobamos si se han cargado los datos,
           //si se han cargado se muestra la lista de usuarios
-
           if (snap.hasData) {
             return ListView.builder(
                 //Con el simbolo de exclamacion se dice que estamos seguro que no va a ser nulo
@@ -66,8 +65,11 @@ class _ListaTareasState extends State<ListaTareas> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
+                                      //Llama a tarea_detalle.dart para mostrar la informacion
                                       builder: (context) => TareaDetallada(
-                                          id: snap.data![i].idta),
+                                        id: snap.data![i].idta,
+                                        tarea: snap.data![i],
+                                      ),
                                     ));
                               });
                             },

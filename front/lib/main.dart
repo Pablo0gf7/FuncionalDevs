@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-import 'package:front/models/alumno.dart';
 import 'package:front/pages/bottom_nav.dart';
-import 'package:front/pages/lista_usuarios.dart';
 import 'package:front/pages/rutas.dart';
 
 void main() => runApp(const MyApp());
@@ -13,7 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Material App', home: HomePage());
+    return const MaterialApp(title: 'Material App', home: HomePage());
   }
 }
 

@@ -5,25 +5,25 @@ class Tarea {
   String fecha_inicio;
   String fecha_fin;
   bool estado;
+  int usuario;
 
-  Tarea({
-    required this.idta,
-    required this.nombre,
-    required this.descripcion,
-    required this.fecha_inicio,
-    required this.fecha_fin,
-    required this.estado,
-  });
+  Tarea(
+      {required this.idta,
+      required this.nombre,
+      required this.descripcion,
+      required this.fecha_inicio,
+      required this.fecha_fin,
+      required this.estado,
+      required this.usuario});
 
   factory Tarea.fromJson(Map json) {
     return Tarea(
-      idta: json["idta"],
-      nombre: json["nombre"],
-      descripcion: json["descripcion"],
-      fecha_inicio: json["fecha_inicio"],
-      fecha_fin: json["fecha_fin"],
-      estado: json["estado"],
-      //usuario: json["usuario"]
-    );
+        idta: json["idta"],
+        nombre: json["nombre"],
+        descripcion: json["descripcion"],
+        fecha_inicio: json["fecha_inicio"],
+        fecha_fin: json["fecha_fin"],
+        estado: json["estado"],
+        usuario: json["usuario"]);
   }
 }
