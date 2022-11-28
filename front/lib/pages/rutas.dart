@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front/pages/lista_usuarios.dart';
+import 'package:front/pages/lista_tareas.dart';
 
 //Selecciona lo que se va a mostrar
 
@@ -9,7 +10,7 @@ class Routes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> myList = [const ListaUsuarios()];
+    List<Widget> myList = [const ListaUsuarios(), const ListaTareas()];
     return myList[index];
   }
 }

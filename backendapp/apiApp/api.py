@@ -33,3 +33,8 @@ class TareasFotViewSet(viewsets.ModelViewSet):
     queryset = TareaMenu.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class =  TareaMenuSerializer
+
+class TareasViewSet(viewsets.ModelViewSet):
+    queryset = Tarea.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class =  TareaSerializer

@@ -73,3 +73,16 @@ class TareaMenuSerializer(serializers.ModelSerializer):
             'aula',
             'cantidad'
         )
+class TareaSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = TareaMenu
+        fields = (
+            'idta',
+            'nombre',
+            'descripcion',
+            'fecha_inicio',
+            'fecha_fin',
+            'estado',
+            'usuario'
+        )

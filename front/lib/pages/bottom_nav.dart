@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BNNavigator extends StatefulWidget {
-  const BNNavigator({super.key});
+  final Function currentIndex;
+  const BNNavigator({super.key, required this.currentIndex});
 
   @override
   State<BNNavigator> createState() => _BNNavigatorState();
@@ -16,6 +17,7 @@ class _BNNavigatorState extends State<BNNavigator> {
         onTap: (int i) {
           setState(() {
             index = i;
+            widget.currentIndex(i);
           });
         },
         type: BottomNavigationBarType.fixed,
