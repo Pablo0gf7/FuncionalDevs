@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:front/models/alumno.dart';
@@ -45,6 +46,8 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
                   return Column(
                     children: [
                       ListTile(
+                        leading: const Icon(Icons.android,
+                            size: 40.0, color: Colors.blue),
                         title: Text(snap.data![i].nombre),
                         subtitle: Text(snap.data![i].apellidos),
                       ),

@@ -11,7 +11,7 @@ class ListaTareas extends StatefulWidget {
 }
 
 class _ListaTareasState extends State<ListaTareas> {
-  final urlAlumnos = Uri.parse("http://10.0.2.2:8000/tareas/");
+  final urlTareas = Uri.parse("http://10.0.2.2:8000/tareas/");
 
   final headers = {"content-type": "application/json;charset=UTF-8"};
   late Future<List<Tarea>> tareas;
@@ -21,7 +21,7 @@ class _ListaTareasState extends State<ListaTareas> {
   final descripcion = TextEditingController();
   final fecha_inicio = TextEditingController();
   final fecha_fin = TextEditingController();
-  final estado = TextEditingController();
+  final estado = false;
   final usuario = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _ListaTareasState extends State<ListaTareas> {
         builder: (context, snap) {
           //Comprobamos si se han cargado los datos,
           //si se han cargado se muestra la lista de usuarios
-          print(snap);
+
           if (snap.hasData) {
             return ListView.builder(
                 //Con el simbolo de exclamacion se dice que estamos seguro que no va a ser nulo
@@ -59,7 +59,7 @@ class _ListaTareasState extends State<ListaTareas> {
           return CircularProgressIndicator();
         },
       ),
-      //Vamos a crear un botono para añadir nuevos usuarios
+      //Vamos a crear un boton para añadir nuevos usuarios
       floatingActionButton: FloatingActionButton(
         //Cuando se presione
         onPressed: showFormAlum,
@@ -101,10 +101,6 @@ class _ListaTareasState extends State<ListaTareas> {
                   decoration: const InputDecoration(hintText: "Fecha Fin"),
                 ),
                 TextField(
-                  controller: estado,
-                  decoration: const InputDecoration(hintText: "Estado"),
-                ),
-                TextField(
                   controller: usuario,
                   decoration: const InputDecoration(hintText: "Usuario"),
                 )
@@ -137,36 +133,37 @@ class _ListaTareasState extends State<ListaTareas> {
   /* Hace el get de alumnos el metodo que devolvera los alumnos*/
   Future<List<Tarea>> getTareas() async {
     /**Lo convertira en una Uri */
-    final res = await http.get(urlAlumnos);
+    final res = await http.get(urlTareas);
     final lista = List.from(jsonDecode(res.body));
-    List<Tarea> alumnos = [];
+    List<Tarea> tareas = [];
     lista.forEach((element) {
       final Tarea alumno = Tarea.fromJson(element);
-      alumnos.add(alumno);
+      tareas.add(alumno);
     });
     //Para que los ultimos creados aparezcan los primeros
-    return alumnos.reversed.toList();
+    return tareas.reversed.toList();
   }
 
   //Hace el post de un nuevo alumno
   void saveTareas() async {
     /**Crea el objeto que se envia*/
-    final user = {
+
+    final tarea = {
       "idta": idta.text,
       "nombre": nombre.text,
       "descripcion": descripcion.text,
       "fecha_inicio": fecha_inicio.text,
       "fecha_fin": fecha_fin.text,
-      "estado": estado.text,
+      "estado": estado,
       "usuario": usuario.text
     };
-    await http.post(urlAlumnos, headers: headers, body: jsonEncode(user));
+
+    await http.post(urlTareas, headers: headers, body: jsonEncode(tarea));
     nombre.clear();
     descripcion.clear();
     fecha_inicio.clear();
     fecha_fin.clear();
     idta.clear();
-    estado.clear;
     usuario.clear;
     //para volver a actualizar los usuarios y que se actualice la interfaz
     setState(() {

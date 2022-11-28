@@ -38,7 +38,7 @@ class Tarea(models.Model):
     fecha_inicio = models.DateField(blank=True, null=True)
     fecha_fin = models.DateField(blank=True, null=True)
     estado = models.BooleanField()  # This field type is a guess.
-    usuario = models.ManyToManyField(Usuario)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'tarea'
