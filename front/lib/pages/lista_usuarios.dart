@@ -46,7 +46,7 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
                   return Column(
                     children: [
                       ListTile(
-                        leading: const Icon(Icons.android,
+                        leading: const Icon(Icons.face_2_rounded,
                             size: 40.0, color: Colors.blue),
                         title: Text(snap.data![i].nombre),
                         subtitle: Text(snap.data![i].apellidos),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:front/models/tareas.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:front/pages/tarea_detalle.dart';
 
 class ListaTareas extends StatefulWidget {
   const ListaTareas({super.key});
@@ -44,11 +45,33 @@ class _ListaTareasState extends State<ListaTareas> {
                   return Column(
                     children: [
                       ListTile(
-                        title: Text(snap.data![i].nombre),
-                        subtitle: Text(snap.data![i].descripcion),
-                      ),
-                      //Pone una linea entre cada uno
-                      const Divider()
+                          //Aqui vemos la imagen o lo que se one antes del texto
+                          leading: Text(
+                            snap.data![i].idta.toString(),
+                            textScaleFactor: 4,
+                          ),
+                          //Aqui le pongo el borde y le ajusto los parametros
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            side:
+                                const BorderSide(width: 3, color: Colors.pink),
+                          ),
+                          title: Text(snap.data![i].nombre),
+                          subtitle: Text(snap.data![i].descripcion),
+                          //Aqui se pone lo que va despues del texto
+                          trailing: IconButton(
+                            icon: const Icon(Icons.arrow_forward_ios),
+                            onPressed: () {
+                              setState(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => TareaDetallada(
+                                          id: snap.data![i].idta),
+                                    ));
+                              });
+                            },
+                          )),
                     ],
                   );
                 });
@@ -56,7 +79,7 @@ class _ListaTareasState extends State<ListaTareas> {
           if (snap.hasError) {
             return const Center(child: Text("Hay un error"));
           }
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         },
       ),
       //Vamos a crear un boton para añadir nuevos usuarios
