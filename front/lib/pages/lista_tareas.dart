@@ -28,7 +28,7 @@ class _ListaTareasState extends State<ListaTareas> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FuncionalDevs'),
+        title: const Text('Lista de tareas'),
       ),
       body: FutureBuilder<List<Tarea>>(
         future: tareas,

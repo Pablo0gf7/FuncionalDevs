@@ -30,7 +30,7 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FuncionalDevs'),
+        title: const Text('Lista de Usuarios'),
       ),
       body: FutureBuilder<List<Alumno>>(
         future: alumnos,
