@@ -23,98 +23,95 @@ class _UsuarioDetalleState extends State<UsuarioDetalle> {
       appBar: AppBar(
         title: Text("Usuario ${alum.nombre}"), //titulo de la barra
       ),
-      body: Container(
-        //creo un contenedor de contenedores
-        child: Column(
-          //contenedores por columnas
-          children: <Widget>[
-            Container(
-              color: Color.fromARGB(255, 161, 218, 233), //color
-              child: Row(
-                //contenedor por filas
-                children: <Widget>[
-                  Container(
-                    //contiene el label
-                    height: 100,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Nombre: ",
-                        maxLines: 3,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-                    margin: const EdgeInsets.only(
-                      left: 20.0,
-                      right: 20.0,
-                    ),
+      body: Column(
+        //contenedores por columnas
+        children: <Widget>[
+          Container(
+            color: const Color.fromARGB(255, 161, 218, 233), //color
+            child: Row(
+              //contenedor por filas
+              children: <Widget>[
+                Container(
+                  //contiene el label
+                  height: 100,
+                  margin: const EdgeInsets.only(
+                    left: 20.0,
+                    right: 20.0,
                   ),
-                  Container(
-                    //contiene el nombre y apellidos del usuario
-                    height: 100,
-                    margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        alum.nombre + " " + alum.apellidos,
-                        maxLines: 3,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 25,
-                        ),
+                  child: const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Nombre: ",
+                      maxLines: 3,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                Container(
+                  //contiene el nombre y apellidos del usuario
+                  height: 100,
+                  margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      alum.nombre + " " + alum.apellidos,
+                      maxLines: 3,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            //label nombre de usuario
-            Container(
-              color: Color.fromARGB(255, 84, 189, 218), //color
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    height: 100,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "Nombre de usuario: ",
-                        maxLines: 3,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-                    margin: const EdgeInsets.only(
-                      left: 20.0,
-                      right: 20.0,
-                    ),
+          ),
+          //label nombre de usuario
+          Container(
+            color: const Color.fromARGB(255, 84, 189, 218), //color
+            child: Row(
+              children: <Widget>[
+                Container(
+                  height: 100,
+                  margin: const EdgeInsets.only(
+                    left: 20.0,
+                    right: 20.0,
                   ),
-                  Container(
-                    //contiene el nombre del usuario
-                    height: 100,
-                    margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        alum.nombre_usuario,
-                        maxLines: 3,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 25,
-                        ),
+                  child: const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Nombre de usuario: ",
+                      maxLines: 3,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+                Container(
+                  //contiene el nombre del usuario
+                  height: 100,
+                  margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      alum.nombre_usuario,
+                      maxLines: 3,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       //boton flotante en el centro con lapiz
       floatingActionButton: new FloatingActionButton(
