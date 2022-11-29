@@ -15,7 +15,7 @@ class ListaUsuarios extends StatefulWidget {
 class _ListaUsuariosState extends State<ListaUsuarios> {
   /**Donde queremos acceder */
   /// Se cambia el 127.0.0.1 por 10.0.2.2:8000//
-  final urlAlumnos = Uri.parse("http://10.0.2.2:8000/alumnos/");
+  final urlAlumnos = Uri.parse("http://127.0.0.1:8000/alumnos/");
   //Cabecera que llevaran las peticiones JSOn
   final headers = {"content-type": "application/json;charset=UTF-8"};
   late Future<List<Alumno>> alumnos;
@@ -45,7 +45,7 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
                   return Column(
                     children: [
                       ListTile(
-                        leading: const Icon(Icons.face_2_rounded,
+                        leading: const Icon(Icons.face_rounded,
                             size: 40.0, color: Colors.blue),
                         title: Text(snap.data![i].nombre),
                         subtitle: Text(snap.data![i].apellidos),

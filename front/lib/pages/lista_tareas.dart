@@ -12,7 +12,8 @@ class ListaTareas extends StatefulWidget {
 }
 
 class _ListaTareasState extends State<ListaTareas> {
-  final urlTareas = Uri.parse("http://10.0.2.2:8000/tareas/");
+  //http://10.0.2.2:8000/tareas/
+  final urlTareas = Uri.parse("http://127.0.1:8000/tareas/");
 
   final headers = {"content-type": "application/json;charset=UTF-8"};
   late Future<List<Tarea>> tareas;
