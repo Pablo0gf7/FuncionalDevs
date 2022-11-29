@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:front/models/alumno.dart';
+import 'package:front/pages/usuario_detalle.dart';
 
 import 'package:http/http.dart' as http;
 
@@ -49,6 +50,22 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
                             size: 40.0, color: Colors.blue),
                         title: Text(snap.data![i].nombre),
                         subtitle: Text(snap.data![i].apellidos),
+                        trailing: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UsuarioDetalle(
+                                    id: snap.data![i].idus,
+                                    usuario: snap.data![i],
+                                  ),
+                                ),
+                              );
+                            });
+                          },
+                          icon: const Icon(Icons.arrow_forward_ios),
+                        ),
                       ),
                       //Pone una linea entre cada uno
                       const Divider()
