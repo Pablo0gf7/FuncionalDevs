@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:front/models/alumno.dart';
 
 class UsuarioDetalle extends StatefulWidget {
+  //guarda la información cogida de la vista anterior
   final id;
   final usuario;
 
+  //la recoge
   const UsuarioDetalle({super.key, required this.id, required this.usuario});
 
   @override
@@ -16,19 +18,23 @@ class _UsuarioDetalleState extends State<UsuarioDetalle> {
 
   @override
   Widget build(BuildContext context) {
-    final alum = widget.usuario;
+    final alum = widget.usuario; //contiene la información del usuario
     return Scaffold(
       appBar: AppBar(
-        title: Text("Usuario ${alum.nombre}"),
+        title: Text("Usuario ${alum.nombre}"), //titulo de la barra
       ),
       body: Container(
+        //creo un contenedor de contenedores
         child: Column(
+          //contenedores por columnas
           children: <Widget>[
             Container(
               color: Color.fromARGB(255, 161, 218, 233), //color
               child: Row(
+                //contenedor por filas
                 children: <Widget>[
                   Container(
+                    //contiene el label
                     height: 100,
                     child: Align(
                       alignment: Alignment.centerLeft,
@@ -47,6 +53,7 @@ class _UsuarioDetalleState extends State<UsuarioDetalle> {
                     ),
                   ),
                   Container(
+                    //contiene el nombre y apellidos del usuario
                     height: 100,
                     margin: const EdgeInsets.only(left: 20.0, right: 20.0),
                     child: Align(
@@ -64,7 +71,7 @@ class _UsuarioDetalleState extends State<UsuarioDetalle> {
                 ],
               ),
             ),
-            //nombre de usuario
+            //label nombre de usuario
             Container(
               color: Color.fromARGB(255, 84, 189, 218), //color
               child: Row(
@@ -88,6 +95,7 @@ class _UsuarioDetalleState extends State<UsuarioDetalle> {
                     ),
                   ),
                   Container(
+                    //contiene el nombre del usuario
                     height: 100,
                     margin: const EdgeInsets.only(left: 20.0, right: 20.0),
                     child: Align(
@@ -108,9 +116,19 @@ class _UsuarioDetalleState extends State<UsuarioDetalle> {
           ],
         ),
       ),
+      //boton flotante en el centro con lapiz
       floatingActionButton: new FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.edit),
+        elevation: 5,
+      ),
+      bottomNavigationBar: new BottomAppBar(
+        child: Padding(
+          //elimino el padding
+          padding: const EdgeInsets.all(20),
+        ),
+        elevation: 0.0,
+        color: Colors.white,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
