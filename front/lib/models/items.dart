@@ -12,9 +12,9 @@ class Item {
 
   factory Item.fromJson(Map json) {
     return Item(
-        idit: json["idit"],
+        idit: json["id_item"],
         nombre: json["nombre"],
         descripcion: json["descripcion"],
-        stock: json["stock"]);
+        stock: int.parse(json["stock"]));
   }
 }

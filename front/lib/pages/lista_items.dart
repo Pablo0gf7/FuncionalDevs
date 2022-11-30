@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front/models/items.dart';
+import 'package:front/pages/lista_tareas.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -31,29 +32,56 @@ class _ListaItemsState extends State<ListaItems> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: ((context, i) {
-                return Column(
+                return Row(
                   children: [
                     Container(
+                      alignment: Alignment.centerLeft,
+                      height: 100,
+                      width: 250,
+                      margin: const EdgeInsets.only(
+                        left: 20.0,
+                        right: 20.0,
+                      ),
                       child: Text(
                         snapshot.data![i].nombre.toString(),
-                        textScaleFactor: 4,
+                        maxLines: 3,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 25,
+                        ),
                       ),
                     ),
                     Container(
+                      alignment: Alignment.centerLeft,
+                      height: 100,
+                      width: 50,
+                      margin: const EdgeInsets.only(
+                        left: 20.0,
+                        right: 40.0,
+                      ),
                       child: Text(
                         snapshot.data![i].stock.toString(),
-                        textScaleFactor: 4,
+                        textScaleFactor: 2,
                       ),
                     ),
                     Container(
+                      height: 100,
                       child: IconButton(
-                        icon: const Icon(Icons.add_circle),
+                        icon: const Icon(
+                          Icons.add_circle,
+                        ),
+                        iconSize: 50,
                         onPressed: () {},
                       ),
                     ),
                     Container(
+                      height: 100,
+                      margin: const EdgeInsets.only(
+                        left: 40.0,
+                      ),
                       child: IconButton(
                         icon: const Icon(Icons.remove_circle),
+                        iconSize: 50,
                         onPressed: () {},
                       ),
                     ),
