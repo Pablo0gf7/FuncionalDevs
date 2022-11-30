@@ -4,6 +4,8 @@ python manage.py runserver
 
 con esto ya lo teneis y podeis enviar peticiones a http://127.0.0.1:8000/
 
+pip install -r requerimientos.txt
+
 Ahora mismo las rutas que hay disponibles son 
 
 http://127.0.0.1:8000/alummnos/
