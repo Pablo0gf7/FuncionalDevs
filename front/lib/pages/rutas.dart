@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front/pages/lista_items.dart';
 import 'package:front/pages/lista_usuarios.dart';
 import 'package:front/pages/lista_tareas.dart';
 
@@ -13,7 +14,7 @@ class Routes extends StatelessWidget {
     List<Widget> myList = [
       const ListaUsuarios(),
       const ListaTareas(),
-      const ListaUsuarios()
+      const ListaItems()
     ];
     return myList[index];
   }
