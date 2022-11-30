@@ -38,3 +38,8 @@ class TareasViewSet(viewsets.ModelViewSet):
     queryset = Tarea.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class =  TareaSerializer
+
+class ItemViewSet(viewsets.ModelViewSet):
+    queryset = Item.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class =  ItemSerializer

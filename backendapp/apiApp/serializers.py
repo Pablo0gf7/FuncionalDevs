@@ -86,3 +86,14 @@ class TareaSerializer(serializers.ModelSerializer):
             'estado',
             'usuario'
         )
+
+class ItemSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Item
+        fields = (
+            'id_item',
+            'nombre',
+            'descripcion',
+            'stock'
+        )

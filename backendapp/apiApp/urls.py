@@ -14,6 +14,8 @@ tareasmenu = routers.DefaultRouter()
 tareasmenu.register('tareasmenu', TareasFotViewSet, 'tareasmenu')
 tareas = routers.DefaultRouter()
 tareasmenu.register('tareas', TareasViewSet, 'tareas')
+item = routers.DefaultRouter()
+item.register('item', ItemViewSet, 'item')
 
 urlpatterns = [
   
@@ -25,3 +27,4 @@ urlpatterns += tareasmat.urls
 urlpatterns += tareasfot.urls
 urlpatterns += tareasmenu.urls
 urlpatterns += tareas.urls
+urlpatterns += item.urls

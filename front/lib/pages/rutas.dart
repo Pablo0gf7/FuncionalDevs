@@ -10,7 +10,11 @@ class Routes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> myList = [const ListaUsuarios(), const ListaTareas()];
+    List<Widget> myList = [
+      const ListaUsuarios(),
+      const ListaTareas(),
+      const ListaUsuarios()
+    ];
     return myList[index];
   }
 }

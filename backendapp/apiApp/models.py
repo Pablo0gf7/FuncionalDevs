@@ -74,4 +74,11 @@ class TareaMenu(Tarea):
     class Meta:
      
         db_table = 'tarea_menu'
+class Item(models.Model):
+    id_item = models.IntegerField(primary_key=True)
+    nombre = models.TextField(blank=True, null=True)  # This field type is a guess.
+    descripcion = models.TextField(blank=True, null=True)  # This field type is a guess.
+    stock = models.TextField(blank=True, null=True)  # This field type is a guess.
 
+    class Meta:
+        db_table = 'item'
