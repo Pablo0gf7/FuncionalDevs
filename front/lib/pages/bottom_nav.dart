@@ -26,8 +26,11 @@ class _BNNavigatorState extends State<BNNavigator> {
         selectedFontSize: 15.0,
         unselectedFontSize: 12.0,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Usuarios'),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Tareas'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.supervised_user_circle_sharp),
+              label: 'Usuarios'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt_sharp), label: 'Tareas'),
           BottomNavigationBarItem(
               icon: Icon(Icons.inventory), label: 'Inventario'),
           //BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Inicio')

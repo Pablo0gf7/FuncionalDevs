@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:front/models/tareas.dart';
+import 'package:front/pages/lista_tareas.dart';
 
 class TareaDetallada extends StatefulWidget {
   final int id;
@@ -24,60 +25,237 @@ class _TareaDetalladaState extends State<TareaDetallada> {
       body: ListView(
         padding: const EdgeInsets.all(8),
         children: <Widget>[
-          Container(
-            height: 50,
-            color: const Color.fromARGB(255, 28, 145, 223),
-            child: const Center(child: Text('Nombre')),
-          ),
           SizedBox(
             height: 50,
             child: Center(child: Text(t1.nombre)),
           ),
+
+          Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(
+              left: 20.0,
+              right: 20.0,
+            ),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  child: const Center(
+                      child: Text(
+                    "Fecha Inicio",
+                  )),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 20.0,
+                  ),
+                  child: const Text("Fecha Fin"),
+                ),
+              ],
+            ),
+          ),
+
+          //contenedor fecha
+          Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(
+              left: 20.0,
+              right: 20.0,
+              top: 10.0,
+            ),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  child: Text(
+                    t1.fecha_inicio.substring(8) +
+                        '/' +
+                        t1.fecha_inicio.substring(5, 7) +
+                        '/' +
+                        t1.fecha_inicio.substring(0, 4),
+                  ),
+                ),
+                Container(
+                    margin: const EdgeInsets.only(
+                      left: 20.0,
+                    ),
+                    width: 100,
+                    child: Text(
+                      t1.fecha_fin.substring(8) +
+                          '/' +
+                          t1.fecha_fin.substring(5, 7) +
+                          '/' +
+                          t1.fecha_fin.substring(0, 4),
+                    )),
+              ],
+            ),
+          ),
+
+          //contenedor opciones de explicación
+          Container(
+            margin: const EdgeInsets.only(
+              top: 20.0,
+            ),
+            child: Row(
+              children: <Widget>[
+                //para expandir por todo el width
+                Expanded(
+                  child: Container(
+                    color: Color.fromARGB(255, 32, 231, 245),
+                    width: 100,
+                    height: 100,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.play_circle,
+                        size: 80,
+                      ),
+                      onPressed: () {
+                        /*setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //Llama a tarea_detalle.dart para mostrar la informacion
+                                  builder: (context) => ListaTareas()));
+                        });*/
+                      },
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Color.fromARGB(255, 8, 156, 167),
+                    width: 100,
+                    height: 100,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.list_alt,
+                        size: 80,
+                      ),
+                      onPressed: () {
+                        /*setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //Llama a tarea_detalle.dart para mostrar la informacion
+                                  builder: (context) => ListaTareas()));
+                        });*/
+                      },
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Color.fromARGB(255, 32, 231, 245),
+                    width: 100,
+                    height: 100,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.voicemail,
+                        size: 80,
+                      ),
+                      onPressed: () {
+                        /*setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //Llama a tarea_detalle.dart para mostrar la informacion
+                                  builder: (context) => ListaTareas()));
+                        });*/
+                      },
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.green,
+                    width: 100,
+                    height: 100,
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.check,
+                        size: 80,
+                      ),
+                      onPressed: () {
+                        /*setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //Llama a tarea_detalle.dart para mostrar la informacion
+                                  builder: (context) => ListaTareas()));
+                        });*/
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          //Contenedor descripción
           Container(
             height: 50,
-            color: const Color.fromARGB(255, 28, 145, 223),
-            child: const Center(child: Text('Descripcion')),
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.only(
+                    right: 20.0,
+                    left: 20.0,
+                  ),
+                  child: const Center(child: Text('Descripcion:')),
+                ),
+                SizedBox(
+                  child: Center(child: Text(t1.descripcion)),
+                ),
+              ],
+            ),
           ),
-          SizedBox(
-            height: 50,
-            child: Center(child: Text(t1.descripcion)),
-          ),
+
+          //Contenedor Estado
           Container(
-            height: 50,
-            color: const Color.fromARGB(255, 28, 145, 223),
-            child: const Center(child: Text("Estado")),
+            height: 20,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.only(
+                    right: 20.0,
+                    left: 20.0,
+                    bottom: 0.0,
+                  ),
+                  child: Text("¿Terminada?"),
+                ),
+                if (t1.estado) ...[
+                  SizedBox(
+                    child: Text("si"),
+                  ),
+                ] else ...[
+                  SizedBox(
+                    child: Text("NO"),
+                  ),
+                ]
+              ],
+            ),
           ),
-          SizedBox(
-            height: 50,
-            child: Center(child: Text("${t1.estado}")),
-          ),
+
+          //Contenedor descripción
           Container(
-            height: 50,
-            color: const Color.fromARGB(255, 28, 145, 223),
-            child: const Center(child: Text("Fecha Inicio")),
+            height: 80,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  margin: const EdgeInsets.only(
+                    right: 20.0,
+                    left: 20.0,
+                    top: 0.0,
+                  ),
+                  child: Text("usuario asignado:"),
+                ),
+                SizedBox(
+                  height: 50,
+                  child: Text(t1.usuario.toString()),
+                ),
+              ],
+            ),
           ),
-          SizedBox(
-            height: 50,
-            child: Center(child: Text(t1.fecha_inicio)),
-          ),
-          Container(
-            height: 50,
-            color: const Color.fromARGB(255, 28, 145, 223),
-            child: const Center(child: Text("Fecha Fin")),
-          ),
-          SizedBox(
-            height: 50,
-            child: Center(child: Text(t1.fecha_fin)),
-          ),
-          Container(
-            height: 50,
-            color: const Color.fromARGB(255, 28, 145, 223),
-            child: const Center(child: Text("usuario que la realiza")),
-          ),
-          SizedBox(
-            height: 50,
-            child: Center(child: Text(t1.usuario.toString())),
-          ),
+
           //Boton para que vaya a editar
           TextButton(
             onPressed: () {},
