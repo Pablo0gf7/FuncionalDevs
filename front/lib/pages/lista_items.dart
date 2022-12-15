@@ -13,7 +13,7 @@ class ListaItems extends StatefulWidget {
 
 class _ListaItemsState extends State<ListaItems> {
   //url server
-  final urlItems = Uri.parse("http://127.0.0.1:8000/item/");
+  final urlItems = Uri.parse("http://10.0.2.2:8000/item/");
   //cabecera
   final headers = {"content-type": "application/json;charset=UTF-8"};
   //lista de items
@@ -37,7 +37,7 @@ class _ListaItemsState extends State<ListaItems> {
                     Container(
                       alignment: Alignment.centerLeft,
                       height: 100,
-                      width: 250,
+                      width: 180,
                       margin: const EdgeInsets.only(
                         left: 20.0,
                         right: 20.0,
@@ -47,21 +47,21 @@ class _ListaItemsState extends State<ListaItems> {
                         maxLines: 3,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 18,
                         ),
                       ),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
                       height: 100,
-                      width: 50,
+                      width: 30,
                       margin: const EdgeInsets.only(
                         left: 20.0,
                         right: 40.0,
                       ),
                       child: Text(
                         snapshot.data![i].stock.toString(),
-                        textScaleFactor: 2,
+                        textScaleFactor: 1.25,
                       ),
                     ),
                     Container(
@@ -70,18 +70,15 @@ class _ListaItemsState extends State<ListaItems> {
                         icon: const Icon(
                           Icons.add_circle,
                         ),
-                        iconSize: 50,
+                        iconSize: 20,
                         onPressed: () {},
                       ),
                     ),
                     Container(
                       height: 100,
-                      margin: const EdgeInsets.only(
-                        left: 40.0,
-                      ),
                       child: IconButton(
                         icon: const Icon(Icons.remove_circle),
-                        iconSize: 50,
+                        iconSize: 20,
                         onPressed: () {},
                       ),
                     ),

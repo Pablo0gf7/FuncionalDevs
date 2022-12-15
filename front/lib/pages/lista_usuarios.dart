@@ -18,7 +18,7 @@ class _ListaUsuariosState extends State<ListaUsuarios> {
   /// Se cambia el 127.0.0.1 por 10.0.2.2:8000//
   /// http://127.0.0.1:8000/alumnos/
   /// http://10.0.2.2:8000/alumnos/
-  final urlAlumnos = Uri.parse("http://127.0.0.1:8000/alumnos/");
+  final urlAlumnos = Uri.parse("http://10.0.2.2:8000/alumnos/");
   //Cabecera que llevaran las peticiones JSOn
   final headers = {"content-type": "application/json;charset=UTF-8"};
   late Future<List<Alumno>> alumnos;

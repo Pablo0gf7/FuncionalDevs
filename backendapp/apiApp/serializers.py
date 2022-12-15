@@ -22,7 +22,8 @@ class alumnoSerializer(serializers.ModelSerializer):
             'nombre',
             'apellidos',
             'nombre_usuario',
-            'password'
+            'password',
+            'aula'
         )
     
 #Se encarga de serializar una tarea de material
@@ -96,4 +97,15 @@ class ItemSerializer(serializers.ModelSerializer):
             'nombre',
             'descripcion',
             'stock'
+        )
+
+class PictogramaSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Pictograma
+        fields = (
+            'id_picto',
+            'imagen',
+            'secuencia',
+            'tarea'
         )

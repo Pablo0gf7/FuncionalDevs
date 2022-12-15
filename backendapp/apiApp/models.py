@@ -8,7 +8,7 @@
 from django.db import models
 
 class Usuario(models.Model):
-    idus = models.BigIntegerField(primary_key=True)
+    idus = models.BigAutoField(primary_key=True)
     nombre = models.TextField(blank=True, null=True)  # This field type is a guess.
     apellidos = models.TextField(blank=True, null=True)  # This field type is a guess.
     nombre_usuario = models.TextField(blank=True, null=True)  # This field type is a guess.
@@ -26,13 +26,13 @@ class Profesor(Usuario):
 
 
 class Alumno(Usuario):
-
+    aula = models.TextField(blank=True, null=True);
     class Meta:
         db_table = 'alumno'
 
 
 class Tarea(models.Model):
-    idta = models.BigIntegerField(primary_key=True)
+    idta = models.BigAutoField(primary_key=True)
     nombre = models.TextField(blank=True, null=True)  # This field type is a guess.
     descripcion = models.TextField(blank=True, null=True)  # This field type is a guess.
     fecha_inicio = models.DateField(blank=True, null=True)
@@ -75,10 +75,20 @@ class TareaMenu(Tarea):
      
         db_table = 'tarea_menu'
 class Item(models.Model):
-    id_item = models.IntegerField(primary_key=True)
+    id_item = models.BigAutoField(primary_key=True)
     nombre = models.TextField(blank=True, null=True)  # This field type is a guess.
     descripcion = models.TextField(blank=True, null=True)  # This field type is a guess.
+    
     stock = models.TextField(blank=True, null=True)  # This field type is a guess.
 
     class Meta:
         db_table = 'item'
+
+class Pictograma(models.Model):
+    id_picto = models.BigAutoField(primary_key=True)
+    imagen = models.TextField()
+    secuencia = models.IntegerField(null=True)
+    tarea = models.ForeignKey(Tarea, on_delete=models.CASCADE)
+    
+    class Meta:
+        db_table = 'pictograma'

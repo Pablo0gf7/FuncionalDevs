@@ -5,6 +5,7 @@ from .serializers import *;
 from django.http import response
 
 #Crea la vista de Profesores y los respectivos metodos
+
 class AlumnoViewSet(viewsets.ModelViewSet):
     queryset = Alumno.objects.all()
     permission_classes = [permissions.AllowAny]
@@ -43,3 +44,8 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class =  ItemSerializer
+class PictogramaViewSet(viewsets.ModelViewSet):
+    queryset = Pictograma.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class =  PictogramaSerializer
+

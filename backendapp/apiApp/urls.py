@@ -14,8 +14,14 @@ tareasmenu = routers.DefaultRouter()
 tareasmenu.register('tareasmenu', TareasFotViewSet, 'tareasmenu')
 tareas = routers.DefaultRouter()
 tareasmenu.register('tareas', TareasViewSet, 'tareas')
+
 item = routers.DefaultRouter()
-item.register('item', ItemViewSet, 'item')
+item.register('items', ItemViewSet, 'items')
+
+pictograma = routers.DefaultRouter()
+pictograma.register('pictogramas', PictogramaViewSet, 'pictogramas')
+
+
 
 urlpatterns = [
   
@@ -28,3 +34,5 @@ urlpatterns += tareasfot.urls
 urlpatterns += tareasmenu.urls
 urlpatterns += tareas.urls
 urlpatterns += item.urls
+
+urlpatterns += pictograma.urls
