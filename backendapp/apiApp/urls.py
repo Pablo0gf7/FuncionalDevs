@@ -1,5 +1,6 @@
 from rest_framework import routers
 from .api import *
+from .views import * 
 from django.urls import path
 
 users = routers.DefaultRouter()
@@ -24,7 +25,8 @@ pictograma.register('pictogramas', PictogramaViewSet, 'pictogramas')
 
 
 urlpatterns = [
-  
+  path('tareas/completadas/', TaCompletadas.as_view()),
+  path('usuario/', UsuarioNom.as_view()),
 ]
 
 urlpatterns += users.urls

@@ -38,8 +38,9 @@ class Tarea(models.Model):
     fecha_inicio = models.DateField(blank=True, null=True)
     fecha_fin = models.DateField(blank=True, null=True)
     estado = models.BooleanField()  # This field type is a guess.
+    corregido = models.BooleanField( null=True)
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-
+    
     class Meta:
         db_table = 'tarea'
 

@@ -13,6 +13,18 @@ class profesorSerializer(serializers.ModelSerializer):
             'password',
             'es_admin'
         )
+
+class usuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = (
+            'idus',
+            'nombre',
+            'apellidos',
+            'nombre_usuario',
+            'password'
+            
+        )
 class alumnoSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -77,7 +89,7 @@ class TareaMenuSerializer(serializers.ModelSerializer):
 class TareaSerializer(serializers.ModelSerializer):
     
     class Meta:
-        model = TareaMenu
+        model = Tarea
         fields = (
             'idta',
             'nombre',
@@ -85,6 +97,7 @@ class TareaSerializer(serializers.ModelSerializer):
             'fecha_inicio',
             'fecha_fin',
             'estado',
+            'corregido',
             'usuario'
         )
 
