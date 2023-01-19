@@ -26,6 +26,7 @@ pictograma.register('pictogramas', PictogramaViewSet, 'pictogramas')
 
 urlpatterns = [
   path('tareas/completadas/', TaCompletadas.as_view()),
+   path('tareas/historial/', HistorialTa.as_view()),
   path('usuario/', UsuarioNom.as_view()),
 ]
 

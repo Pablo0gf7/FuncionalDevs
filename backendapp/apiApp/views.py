@@ -15,6 +15,13 @@ class TaCompletadas(APIView):
         serializador = TareaSerializer(tareas, many=True)
         return Response(serializador.data)
 
+class HistorialTa(APIView):
+    
+    def get(self, request, format=None):
+        tareas = Tarea.objects.filter(estado='True', corregido='True')
+        serializador = TareaSerializer(tareas, many=True)
+        return Response(serializador.data)
+
 
 class UsuarioNom(APIView):
     
